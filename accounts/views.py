@@ -9,6 +9,7 @@ from .tokens import create_jwt_pair_for_user
 from . models import User, Follow
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken, Token
+from drf_yasg.utils import swagger_auto_schema
 
 # Create your views here.
 
@@ -17,6 +18,10 @@ class SignUpView(generics.GenericAPIView):
     serializer_class = SignUpSerializer
     permission_classes = []
 
+    @swagger_auto_schema(
+        operation_summary='User Sign Up',
+        operation_description='User Sign Up with this Endpoint'
+    )
     def post(self, request: Request):
         data = request.data
 
@@ -38,6 +43,10 @@ class SignUpView(generics.GenericAPIView):
 class LoginView(APIView):
     permission_classes = []
 
+    @swagger_auto_schema(
+        operation_summary='JWT Pair',
+        operation_description='Get JWT Pair with this Endpoint'
+    )
     def post(self, request: Request):
         email = request.data.get('email')
         password = request.data.get('password')
@@ -58,6 +67,10 @@ class LoginView(APIView):
         else:
             return Response(data={'Messag': 'Invalid email or password'})
 
+    @swagger_auto_schema(
+        operation_summary='Get Request Info',
+        operation_description='Get Request Infor with this Endpoint'
+    )
     def get(self, request: Request):
         content = {
             'user': str(request.user),
@@ -71,6 +84,10 @@ class FollowToggle(APIView):
 
     permission_classes = [IsAuthenticated]
 
+    @swagger_auto_schema(
+        operation_summary='Follow',
+        operation_description='Follow User with this Endpoint'
+    )
     def put(self, request, user_id):
         follower = request.user
         follow, created = Follow.objects.get_or_create(
@@ -86,6 +103,10 @@ class LogoutView(generics.GenericAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = Logoutserializer
 
+    @swagger_auto_schema(
+        operation_summary='Logout',
+        operation_description='Logout User with this Endpoint'
+    )
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)

@@ -11,6 +11,7 @@ from .permissions import ReadOnly, AuthorOrReadOnly
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework import request
 from .models import User
+from drf_yasg.utils import swagger_auto_schema
 
 # Create your views here.
 
@@ -42,14 +43,24 @@ class PostListCreateView(generics.GenericAPIView,
         serializer.save(author=user)
         return super().perform_create(serializer)
 
+        # GET ALL POST
+
+    @swagger_auto_schema(
+        operation_summary='List all Post',
+        operation_description='This Returns List of all Post with Descending Dates'
+    )
+    def get(self, request: Request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
     def get_queryset(self):
         queryset = super().get_queryset()
         queryset = queryset.order_by('-created_at')
         return queryset
 
-    def get(self, request: Request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
-
+    @swagger_auto_schema(
+        operation_summary='Create a New Post',
+        operation_description='Create a New Post with this endpoint'
+    )
     def post(self, request: Request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 
@@ -63,12 +74,24 @@ class PostRetrieveUpdateDeleteView(generics.GenericAPIView,
     queryset = Post.objects.all()
     permission_classes = [AuthorOrReadOnly]
 
+    @swagger_auto_schema(
+        operation_summary='Get Post By ID',
+        operation_description='Get individual Post by ID with this endpoint'
+    )
     def get(self, request: Request, *args, **kwargs):
         return self.retrieve(request, *args, **kwargs)
 
+    @swagger_auto_schema(
+        operation_summary='Update Individual Post',
+        operation_description='Update Individual Post With this Endpoint'
+    )
     def put(self, request: Request, *args, **kwargs):
         return self.update(request, *args, **kwargs)
 
+    @swagger_auto_schema(
+        operation_summary='Delete Individual Post',
+        operation_description='Delete Individual Post With this Endpoint'
+    )
     def delete(self, request: Request, *args, **kwargs):
 
         return self.destroy(request, *args, **kwargs)
@@ -101,6 +124,10 @@ class ListPOstForAuthor(generics.GenericAPIView, mixins.ListModelMixin):
 
         return queryset
 
+    @swagger_auto_schema(
+        operation_summary='List Post For Author',
+        operation_description='Get post for Author With this Endpoint'
+    )
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
 
@@ -110,6 +137,10 @@ class PostLikeView(generics.UpdateAPIView):
     serializer_class = PostSerializer
     permission_classes = [IsAuthenticated]
 
+    @swagger_auto_schema(
+        operation_summary=' Post Like',
+        operation_description='Post Like Endpoint'
+    )
     def put(self, request, *args, **kwargs):
         post = self.get_object()
         user = request.user

@@ -11,7 +11,7 @@ urlpatterns = [
          name="post_by_id"),
     path('current_user/', views.get_post_for_current_user, name='current_user'),
     path('posts_for/', views.ListPOstForAuthor.as_view(),
-         name='posts_for_current_user',),
+         name='posts_for_Authon',),
     path('<int:pk>/like/', PostLikeView.as_view(), name='post-like'),
     path('', CommentListCreateView.as_view(), name='comment_list_create'),
     path('<int:pk>/', CommentRetrieveUpdateDestroyView.as_view(),
