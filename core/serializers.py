@@ -15,7 +15,8 @@ class PostSerializer(serializers.ModelSerializer):
     # created_by = serializers.ReadOnlyField(source='created_by.username')
     author = serializers.ReadOnlyField(source='author.username')
 
-    comments = CommentSerializer(many=True, read_only=True)
+    comments = CommentSerializer(many=True)
+    # read_only=True this wis deleted here
 
     class Meta:
         model = Post
