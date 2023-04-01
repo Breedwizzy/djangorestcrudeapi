@@ -1,7 +1,8 @@
 from . import views
 from django.urls import path
 from django.conf import settings
-from .views import PostLikeView, CommentListCreateView, CommentRetrieveUpdateDestroyView
+from .views import PostLikeView
+# CommentListCreateView, CommentRetrieveUpdateDestroyView
 
 
 urlpatterns = [
@@ -13,7 +14,7 @@ urlpatterns = [
     path('posts_for/', views.ListPOstForAuthor.as_view(),
          name='posts_for_Authon',),
     path('<int:pk>/like/', PostLikeView.as_view(), name='post-like'),
-    path('', CommentListCreateView.as_view(), name='comment_list_create'),
-    path('<int:pk>/', CommentRetrieveUpdateDestroyView.as_view(),
-         name='comment_retrieve_update_destroy'),
+    # path('', CommentListCreateView.as_view(), name='comment_list_create'),
+    # path('<int:pk>/', CommentRetrieveUpdateDestroyView.as_view(),
+    #     name='comment_retrieve_update_destroy'),
 ]

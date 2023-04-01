@@ -3,8 +3,9 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticatedOrReadOnly
 from rest_framework import status, generics, mixins
 from rest_framework.decorators import api_view, APIView, permission_classes
-from .models import Post, Comment
-from .serializers import PostSerializer, CommentSerializer
+from .models import Post
+from .serializers import PostSerializer
+# , CommentSerializer
 from django.shortcuts import get_object_or_404
 from accounts.serializer import CurrentUserPostSerializer
 from .permissions import ReadOnly, AuthorOrReadOnly
@@ -154,11 +155,11 @@ class PostLikeView(generics.UpdateAPIView):
         return Response(serializer.data)
 
 
+'''
 class CommentListCreateView(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
-    permission_classes = [IsAuthenticated]
-    #permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
@@ -167,5 +168,5 @@ class CommentListCreateView(generics.ListCreateAPIView):
 class CommentRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
-   # permission_classes = [IsAuthenticatedOrReadOnly]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
+'''
