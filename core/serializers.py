@@ -12,7 +12,8 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
-    author = serializers.ReadOnlyField(source='author.username')
+    # author = serializers.ReadOnlyField(source='author.username')
+    author = serializers.StringRelatedField(source='author.username')
 
     comments = CommentSerializer(many=True)
     # read_only=True this wis deleted here
