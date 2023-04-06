@@ -127,8 +127,8 @@ WSGI_APPLICATION = 'simpleblog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'djangorestframework',
-        'USER': 'postgres',
+        'NAME': 'mydb',
+        'USER': 'wizzy',
         'PASSWORD': 'eternity',
         'HOST': 'localhost',
         'PORT': '',
@@ -183,7 +183,7 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
