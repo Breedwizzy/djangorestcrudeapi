@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['184.73.42.82',
                  'localhost, http://ec2-184-73-42-82.compute-1.amazonaws.com']
 
 
-# Application definition
+# Application definitio
 
 INSTALLED_APPS = [
     'django.contrib.admin',
