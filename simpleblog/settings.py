@@ -30,7 +30,7 @@ DEBUG = True
 
 
 ALLOWED_HOSTS = [
-    'localhost', '72.44.52.129']
+    'localhost', '72.44.52.129', 'ec2-72-44-52-129.compute-1.amazonaws.com']
 
 
 # Application definitio
