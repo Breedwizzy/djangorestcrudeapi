@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-f_$y=l8^blz-p@&&s*3cy7h*e0)kxm01!2(ab8qddp+2p9c5p5
 DEBUG = False
 
 ALLOWED_HOSTS = ['184.73.42.82',
-                 'localhost, http://ec2-184-73-42-82.compute-1.amazonaws.com']
+                 'localhost', 'http://ec2-184-73-42-82.compute-1.amazonaws.com']
 
 
 # Application definitio
