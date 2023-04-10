@@ -30,7 +30,7 @@ DEBUG = False
 
 
 ALLOWED_HOSTS = [
-    'localhost', '54.89.84.255', 'ec2-54-89-84-255.compute-1.amazonaws.com']
+    'localhost', '54.89.84.255', 'www.simpwaka.store', 'simpwaka.store']
 
 
 # Application definitio

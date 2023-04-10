@@ -15,7 +15,7 @@ schema_view = get_schema_view(
         description="Test description",
         terms_of_service="https://www.google.com/policies/terms/",
         contact=openapi.Contact(
-            'https://www.linkedin.com/in/wisdom-ebuara-016882248/'),
+            "odeywisdom@gmail.com"),
         license=openapi.License(name="BSD License"),
     ),
     public=True,
