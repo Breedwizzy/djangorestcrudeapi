@@ -30,7 +30,7 @@ DEBUG = False
 
 
 ALLOWED_HOSTS = [
-    'localhost', '54.89.84.255', 'www.simpwaka.store', 'simpwaka.store']
+    '*']
 
 
 # Application definitio
@@ -100,7 +100,7 @@ SWAGGER_SETTINGS = {
 }
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=2),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
     "SIGNING_KEY": SECRET_KEY,
     "AUTH_HEADER_TYPES": ("Bearer",),
@@ -130,7 +130,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'mydb',
-        'USER': 'wizzy',
+        'USER': 'postgres',
         'PASSWORD': 'eternity',
         'HOST': 'localhost',
         'PORT': '',
